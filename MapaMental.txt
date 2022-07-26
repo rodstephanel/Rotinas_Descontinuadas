@@ -1,0 +1,8 @@
+* Importar CSV com a lista de rotinas
+
+* Importar arquivo para pesquisa
+For lista de arquivo
+    For lista de rotinas CSV
+        Se encontrado rotina
+            Escreve em arquivo rotina encontrada
+        
