@@ -9,7 +9,7 @@ https://tdn.engpro.totvs.com.br/pages/releaseview.action?pageId=652383979<br />
 </p>
 
 ## Prints a list of routines discontinued by TOTVS as per the link below in a CSV file
-<p>**TOTVS discontinued routines from 04/04/2022**<br />
+<p>__TOTVS discontinued routines from 04/04/2022__<br />
 https://tdn.engpro.totvs.com.br/pages/releaseview.action?pageId=604227592<br />
 <br />
 **TOTVS discontinued routines from 08/31/2022**<br />
