@@ -2,13 +2,14 @@ import os
 import pandas as pd 
 from PySimpleGUI import PySimpleGUI as sg
 
+
 def layout():
     #Layout
     sg.theme('DarkGrey5')
     layout = [
-        [sg.Text('Local + Nome da Lista CSV: '), sg.Input(key='arquivo_CSV')],
-        [sg.Text('Local dos arquivos do prjeto: '),sg.Input(key='local_arquivo')],
-        [sg.Text('Local Relatorio gerado: '),sg.Input(key='local_nv_arq')],
+        [sg.Text('Local + Nome da Lista CSV: ') ,sg.Input(), sg.FileBrowse(key='arquivo_CSV')],
+        [sg.Text('Local dos arquivos do prjeto: '),sg.Input(), sg.FolderBrowse(key='local_arquivo')],
+        [sg.Text('Local Relatorio gerado: '),sg.Input(), sg.FolderBrowse(key='local_nv_arq')],
         [sg.Text('Nome Relatorio: '),sg.Input(key='nome_rel')],
         [sg.Button('Processar')]
     ]
