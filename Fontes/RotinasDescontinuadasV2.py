@@ -4,10 +4,12 @@ from PySimpleGUI import PySimpleGUI as sg
 
 def layout():
     #Layout
-    sg.theme('Reddit')
+    sg.theme('DarkGrey5')
     layout = [
-        [sg.Text('Arquivo CSV'), sg.Input(key='arquivoCSV')], #Arquivo CSV contendo a lista de rotinas descontinuadas
-        [sg.Text('Local dos arquivos'),sg.Input(key='localArquivo')], #Local onde se encontra os programas fontes do Protheus
+        [sg.Text('Local + Nome da Lista CSV: '), sg.Input(key='arquivo_CSV')],
+        [sg.Text('Local dos arquivos do prjeto: '),sg.Input(key='local_arquivo')],
+        [sg.Text('Local Relatorio gerado: '),sg.Input(key='local_nv_arq')],
+        [sg.Text('Nome Relatorio: '),sg.Input(key='nome_rel')],
         [sg.Button('Processar')]
     ]
     
@@ -20,10 +22,10 @@ def layout():
         if eventos == sg.WINDOW_CLOSED:
             break
         if eventos == 'Processar':
-            process(valores["arquivoCSV"], valores["localArquivo"])
+            process(valores["arquivo_CSV"], valores["local_arquivo"], valores["local_nv_arq"], valores["nome_rel"])
             break
 
-def process(caminhoArq, diretorio):
+def process(caminhoArq, diretorio, caminho_rel, nome_rel):
 
     # Importa lista de rotinas contidas no CSV
     rotinasDescontinuadas = pd.read_csv(caminhoArq, sep =';', usecols=['Codigo-Fonte'])
@@ -34,7 +36,9 @@ def process(caminhoArq, diretorio):
     print(f"setRotinasDescontinuadas= {setRotinasDescontinuadas}")
     
     #Abre/cria arquivo para colocar os resultados
-    relResultado = open("Relatorio de resultados.csv", "w")
+    #caminho_relatorio = os.path.realpath("C:\\Users\\RODRIGO ST\\Desktop\\BSO")
+    caminho_relatorio = os.path.realpath(caminho_rel)
+    relResultado = open(os.path.join(caminho_relatorio, nome_rel + ".csv"), "w")
     relResultado.write("Funcao;Local\n")
 
     #Percorre todo o diretório indicado
@@ -55,14 +59,15 @@ def process(caminhoArq, diretorio):
             compara = setRotinasDescontinuadas & set(textArqVerficado)
 
             if len(compara) != 0:
-                compara = ','.join(list(compara))
+                compara = ','.join(list(compara)).replace("()","")
                 print(f"Foi verificado funcoes {compara} descontinuadas no arquivo {arquivo}")
                 relResultado.write(f"{compara};{arqVerificado.name}\n")
-
+            #else:
+            #   print(f"Nao foi encontrado nenhuma palavra nesse arquivo {arquivo}")
     relResultado.close()
     
 
 if __name__ == "__main__":
 
     layout()
-    print("FIM")
+    print("FIM ;)")
