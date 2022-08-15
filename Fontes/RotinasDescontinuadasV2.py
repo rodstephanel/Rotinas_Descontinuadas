@@ -7,10 +7,10 @@ def layout():
     #Layout
     sg.theme('DarkGrey5')
     layout = [
-        [sg.Text('Local + Nome da Lista CSV: ') ,sg.Input(), sg.FileBrowse(key='arquivo_CSV')],
-        [sg.Text('Local dos arquivos do prjeto: '),sg.Input(), sg.FolderBrowse(key='local_arquivo')],
-        [sg.Text('Local Relatorio gerado: '),sg.Input(), sg.FolderBrowse(key='local_nv_arq')],
-        [sg.Text('Nome Relatorio: '),sg.Input(key='nome_rel')],
+        [sg.Text('Lista CSV: ') ,sg.Input(), sg.FileBrowse(key='arquivo_CSV')],
+        [sg.Text('Local dos arquivos do projeto: '),sg.Input(), sg.FolderBrowse(key='local_arquivo')],
+        [sg.Text('Local para salvar o relatorio gerado: '),sg.Input(), sg.FolderBrowse(key='local_nv_arq')],
+        [sg.Text('Nome do relatorio: '),sg.Input(key='nome_rel')],
         [sg.Button('Processar')]
     ]
     
